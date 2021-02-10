@@ -1,0 +1,22 @@
+body, html{
+    height: 100%;
+    background-image: url("https://tweedekamer2017.stemwijzer.nl/public/gfx/background-1024.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container{
+}
+
+.info-label{
+    color:rgb(0, 225, 255)
+}
+
+.container{
+    height: auto;
+}
+
+a:hover{
+    text-decoration: none;
+
+}
