@@ -17,8 +17,28 @@
     <title>StemWijzer</title>
 </head>
 <body>
-    <div class="app">
-        <div class="start app__content" style="background-image: url('https://tweedekamer2021.stemwijzer.nl/gfx/img/background.jpg');">
+    <div class="app" id="top_container">
+        <nav class="app__nav app__nav--hidden" id="top_nav">
+            <div class="app__nav-left">
+                <button tabindex="-1" class="button button--back button--disabled" id="top_nav_back_button"></button>
+                <div class="app__nav-logo">
+                    <img src="https://tweedekamer2021.stemwijzer.nl/gfx/img/votematch_applogo.svg" alt="StemWijzer logo">
+                </div>
+            </div>
+            <div class="app__nav-progress">
+                <span class="app__nav-progress-indicator" style="width: 0%;"></span>
+            </div>
+            <div class="app__nav-right">
+                <div class="app__nav-counter">
+                    <strong>1/</strong>
+                    30
+                </div>
+                <a href="https://www.prodemos.nl" target="_blank" rel="nofollow" class="app__nav-client-logo">
+                    <img src="https://tweedekamer2021.stemwijzer.nl/gfx/img/prodemos-black.svg" alt="ProDemos logo">
+                </a>
+            </div>
+        </nav>
+        <div class="start app__content" id="main_container" style="background-image: url('https://tweedekamer2021.stemwijzer.nl/gfx/img/background.jpg');">
             <div class="start__modal-wrapper">
                 <div class="start__modal-left">
                     <div class="start__modal">
@@ -28,7 +48,7 @@
                         <h1 class="start__title"></h1>
                         <h2 class="start__subtitle">Test je politieke voorkeur aan de handn van 30 stellingen</h2>
                         <div class="start__modal-footer">
-                            <button tabindex="0" class="start__button button">Start</button>
+                            <button tabindex="0" class="start__button button" id="button_start">Start</button>
                             <a tabindex="0" class="start__modal-accesibility-link"> Ga naar de toegankelijke versie voor mensen met een visuele beperking </a>
                         </div>
                     </div>
@@ -58,6 +78,42 @@
                 <a href="https://www.prodemos.nl" target="_blank" rel="nofollow" class="start__client-logo">
                     <img src="https://tweedekamer2021.stemwijzer.nl/gfx/img/prodemos-white.svg" alt="ProDemos logo">
                 </a>
+            </div>
+        </div>
+        <div class="statement app__content hidden" id="statement_container">
+            <div class="statement__inner">
+                <h3 class="statement__theme"></h3>
+                <h1 class="statement-title statement__tab-buttons--closed"></h1>
+                <div class="statement__tab-buttons statement__tab-buttons--closed">
+                    <button tabindex="0" class="statement__tab-button statement__tab-button--parties"> Wat vinden de partijen </button>
+                    <button tabindex="0" class="statement__tab-button statement__tab-button--more-info"> Meer weten </button>
+                </div>
+            </div>
+            <div class="statement__filler"></div>
+            <div class="statement__buttons">
+                <div class="statement__buttons-main">
+                    <button tabindex="0" class="statement__button button button--agree"> Eens </button>
+                    <button tabindex="0" class="statement__button button button--neither"> Geen van beide </button>
+                    <button tabindex="0" class="statement__button button button--disagree"> Oneens </button>
+                </div>
+                <button tabindex="0" class="statement__skip skip"> Overslaan </button>
+                <div class="statement__buttons-mobile">
+                    <div class="statement__buttons-mobile-inner">
+                        <div class="statement__button-wrapper">
+                            <button tabindex="0" class="statement__button button button--mobile button--agree"></button>
+                            <label class="statement__button-label"> Eens </label>
+                        </div>
+                        <div class="statement__button-wrapper">
+                            <button tabindex="0" class="statement__button button button--mobile button--neither"></button>
+                            <label class="statement__button-label"> Geen van beide </label>
+                        </div>
+                        <div class="statement__button-wrapper">
+                            <button tabindex="0" class="statement__button button button--mobile button--disagree"></button>
+                            <label class="statement__button-label"> Oneens </label>
+                        </div>
+                    </div>
+                    <button tabindex="0" class="statement__skip statement__skip--mobile skip"> Overslaan </button>
+                </div>
             </div>
         </div>
     </div>
