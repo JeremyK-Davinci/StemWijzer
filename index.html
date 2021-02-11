@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/06ea314d81.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://tweedekamer2021.stemwijzer.nl/css/app.665a3835.css">
     <link rel="stylesheet" href="CSS/index.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -16,26 +17,52 @@
     <title>StemWijzer</title>
 </head>
 <body>
-    <div class="container col-12 mx-0">
-        <div class="col-lg-8 col-12 offset-lg-2 bg-white mt-4 pt-3">
-            <img class="kop-logo col-4 offset-1" src="https://tweedekamer2017.stemwijzer.nl/public/gfx/logo-stemwijzer.svg" alt="StemWijzer">
-            <p class="kop-label col-lg-4 col-10 offset-1 text-left font-weight-bolder h6">StemWijzer Tweede Kamer 2021</p>
-            <p class="info-label col-10 offset-1 text-left font-weight-bolder h4">Test uw politieke voorkeur aan de hand van 30 stellingen</p>
-            <div class="start-container col-lg-10 col-12 offset-1 align-content-left">
-                <a class="intro-xsable col-lg-5 offset-1" href="https://tweedekamer2017.stemwijzer.nl/xsable"></a>
-                <a class="intro-privacy col-6 align-self-start text-dark" href="https://tweedekamer2017.stemwijzer.nl/privacy.html">
-                    <img class="col-1 p-2" src="https://tweedekamer2017.stemwijzer.nl/public/gfx/icon-lock.svg" alt="Privacy">
-                    <p class="col-5 mx-0 px-0">
-                        De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement
-                    </p>
+    <div class="app">
+        <div class="start app__content" style="background-image: url('https://tweedekamer2021.stemwijzer.nl/gfx/img/background.jpg');">
+            <div class="start__modal-wrapper">
+                <div class="start__modal-left">
+                    <div class="start__modal">
+                        <div class="start__logo">
+                            <img src="https://tweedekamer2021.stemwijzer.nl/gfx/img/votematch_applogo.svg" alt="Header logo">
+                        </div>
+                        <h1 class="start__title"></h1>
+                        <h2 class="start__subtitle">Test je politieke voorkeur aan de handn van 30 stellingen</h2>
+                        <div class="start__modal-footer">
+                            <button tabindex="0" class="start__button button">Start</button>
+                            <a tabindex="0" class="start__modal-accesibility-link"> Ga naar de toegankelijke versie voor mensen met een visuele beperking </a>
+                        </div>
+                    </div>
+                    <div class="start__disclaimer">
+                        <div class="start__disclaimer-text">
+                            Bij StemWijzer nemen we privacy en het kiesrecht zeer serieus. Je krijgt straks eerst alle stellingen te zien. 
+                            Daarna vragen we je toestemming om bepaalde gegevens te delen. Dat is niet verplicht. Ook zonder akkoord te gaan, kun je de uitslag bekijken. 
+                            Verder gebruiken we Google Analytics om de StemWijzer te verbeteren. We hebben Google Analytics op een privacyvriendelijke manier ingesteld.
+                            <br><br>
+                            Lees meer in ons volledige privacy- en cookiestatement:
+                        </div>
+                        <button class="start__disclaimer-button button button--white">
+                            Privacystatement
+                        </button>
+                    </div>
+                </div>
+                <div class="start__parties">
+                    <div class="start__parties-title"> Deze partijen doen mee </div>
+                    <div class="start__parties-list">
+
+                    </div>
+                    <div class="start__parties-title"> Deze partijen doen niet mee </div>
+                    <div class="start__parties-list">
+
+                    </div>
+                </div>
+                <a href="https://www.prodemos.nl" target="_blank" rel="nofollow" class="start__client-logo">
+                    <img src="https://tweedekamer2021.stemwijzer.nl/gfx/img/prodemos-white.svg" alt="ProDemos logo">
                 </a>
-                <button class="btn btn-dark btn-lg col-4 col-md-3 col-sm-3 col-lg-2 align-self-end" id="btn-start">Start</button>
             </div>
         </div>
-        <footer class="col-12 fixed-bottom">
-            <img class="col-lg-2 col-md-3 col-sm-3 col-4 offset-lg-1" src="https://tweedekamer2017.stemwijzer.nl/public/gfx/logo-stemwijzer-white.png" alt="StemWijzer">
-        </footer>
     </div>
+    <script src="JS/partyList.js"></script>
+    <script src="http://stemwijzer.dvc-icta.nl/data.js"></script>
     <script src="JS/index.js"></script>
 </body>
 </html>
