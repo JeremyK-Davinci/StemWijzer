@@ -30,7 +30,7 @@
             </div>
             <div class="app__nav-right">
                 <div class="app__nav-counter">
-                    <strong>1/</strong>
+                    <strong id="counter">1/</strong>
                     30
                 </div>
                 <a href="https://www.prodemos.nl" target="_blank" rel="nofollow" class="app__nav-client-logo">
@@ -89,30 +89,57 @@
                     <button tabindex="0" class="statement__tab-button statement__tab-button--more-info"> Meer weten </button>
                 </div>
             </div>
+            <div class="statement__tab statement__tab--parties hidden">
+                <div class="statement__parties-column parties-column">
+                    <div class="parties-column__header parties-column__header--agree">
+                        <span class="parties-column__title"> Eens </span>
+                        <p class="parties-column__explanation"> Deze partijen zijn het met de stelling eens </p>
+                    </div>
+                </div>
+                <div class="statement__parties-column parties-column">
+                    <div class="parties-column__header parties-column__header--neither">
+                        <span class="parties-column__title"> Geen van beide </span>
+                        <p class="parties-column__explanation"> Deze partijen zijn het niet eens en ook niet oneens met de stelling </p>
+                    </div>
+                </div>
+                <div class="statement__parties-column parties-column">
+                    <div class="parties-column__header parties-column__header--disagree">
+                        <span class="parties-column__title"> Oneens </span>
+                        <p class="parties-column__explanation"> Deze partijen zijn het met de stelling oneens </p>
+                    </div>
+                </div>
+                <button tabindex="0" class="statement__tab-close"> Sluiten </button>
+            </div>
+            <div class="statement__tab statement__tab--more-info statement__tab--center hidden">
+                <div class="statement__tab-text text">
+                    <h1></h1>
+                </div>
+                <button tabindex="0" class="statement__tab-close"> Sluiten </button>
+            </div>
             <div class="statement__filler"></div>
             <div class="statement__buttons">
                 <div class="statement__buttons-main">
-                    <button tabindex="0" class="statement__button button button--agree"> Eens </button>
-                    <button tabindex="0" class="statement__button button button--neither"> Geen van beide </button>
-                    <button tabindex="0" class="statement__button button button--disagree"> Oneens </button>
+                    <button tabindex="0" class="statement__button button button--agree" id="1"> Eens </button>
+                    <button tabindex="0" class="statement__button button button--neither" id="2"> Geen van beide </button>
+                    <button tabindex="0" class="statement__button button button--disagree" id="3"> Oneens </button>
                 </div>
-                <button tabindex="0" class="statement__skip skip"> Overslaan </button>
+                <button tabindex="0" class="statement__skip skip" id="4"> Overslaan </button>
                 <div class="statement__buttons-mobile">
                     <div class="statement__buttons-mobile-inner">
                         <div class="statement__button-wrapper">
-                            <button tabindex="0" class="statement__button button button--mobile button--agree"></button>
+                            <button tabindex="0" class="statement__button button button--mobile button--agree" id="1"></button>
                             <label class="statement__button-label"> Eens </label>
                         </div>
                         <div class="statement__button-wrapper">
-                            <button tabindex="0" class="statement__button button button--mobile button--neither"></button>
+                            <button tabindex="0" class="statement__button button button--mobile button--neither" id="2"></button>
                             <label class="statement__button-label"> Geen van beide </label>
                         </div>
                         <div class="statement__button-wrapper">
-                            <button tabindex="0" class="statement__button button button--mobile button--disagree"></button>
+                            <button tabindex="0" class="statement__button button button--mobile button--disagree" id="3"></button>
                             <label class="statement__button-label"> Oneens </label>
                         </div>
                     </div>
-                    <button tabindex="0" class="statement__skip statement__skip--mobile skip"> Overslaan </button>
+                    <button tabindex="0" class="statement__skip statement__skip--mobile skip" id="4"> Overslaan </button>
                 </div>
             </div>
         </div>
