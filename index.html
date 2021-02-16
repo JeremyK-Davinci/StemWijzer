@@ -46,7 +46,7 @@
                             <img src="https://tweedekamer2021.stemwijzer.nl/gfx/img/votematch_applogo.svg" alt="Header logo">
                         </div>
                         <h1 class="start__title"></h1>
-                        <h2 class="start__subtitle">Test je politieke voorkeur aan de handn van 30 stellingen</h2>
+                        <h2 class="start__subtitle">Test je politieke voorkeur aan de hand van 30 stellingen</h2>
                         <div class="start__modal-footer">
                             <button tabindex="0" class="start__button button" id="button_start">Start</button>
                             <a tabindex="0" class="start__modal-accesibility-link"> Ga naar de toegankelijke versie voor mensen met een visuele beperking </a>
@@ -141,6 +141,42 @@
                     </div>
                     <button tabindex="0" class="statement__skip statement__skip--mobile skip" id="4"> Overslaan </button>
                 </div>
+            </div>
+        </div>
+        <div class="select-statements app__content hidden">
+            <div class="options-header select-statements__header">
+                <div class="options-header__details">
+                    <h1 class="options-header__title">Zijn er onderwerpen die je extra belangrijk vindt?</h1>
+                    <p class="options-header__subtitle">
+                        <strong id="options-header__subtitle-selected">0/</strong>
+                        30 stellingen geselecteerd
+                    </p>
+                </div>
+                <div class="options-header__buttons">
+                    <button tabindex="0" class="options-header__next button"> Volgende stap </button>
+                </div>
+            </div>
+            <div class="select-statements__content options__content">
+            </div>
+        </div>
+        <div class="select-parties app__content hidden">
+            <div class="options-header select-parties__header">
+                <div class="options-header__details">
+                    <h1 class="options-header__title">Welke patijen wil je meenemen in het resultaat?</h1>
+                    <p class="options-header__subtitle">Kies alle partijen, alleen de partijen die nu al in de Tweede Kamer zitten, of maak zelf een selectie. Selecteer minimaal 3 partijen.</p>
+                </div>
+                <div class="options-header__buttons">
+                    <button tabindex="-1" class="options-header__next button button--disabled"> Volgende stap </button>
+                </div>
+            </div>
+            <div class="select-parties__content options__content">
+                <div class="select-parties__content-top">
+                    <button class="radio"> Alle partijen </button>
+                    <button class="radio"> Zittende parijen </button>
+                    <span class="stretch"></span>
+                    <button class="radio radio--remove"> Selectie verwijderen </button>
+                </div>
+
             </div>
         </div>
     </div>
