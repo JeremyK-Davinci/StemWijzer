@@ -56,9 +56,9 @@ var results = [];
 //end-region
 
 //region -constants-
-const zeroIndex = 0; 
-const firstIndex = 1;
-const secondIndex = 2;
+const firstIndex = 0; 
+const secondIndex = 1;
+const thirdIndex = 2;
 
 const progressWidthIncrement = 3.0303
 
@@ -83,9 +83,9 @@ statement_Tab_Button_Close.forEach(button => {
     button.addEventListener("click", closeCurrentTab);
 });
 
-party_Options_Radio_Buttons[zeroIndex].addEventListener("click", selectAllParties);
-party_Options_Radio_Buttons[firstIndex].addEventListener("click", selectActiveParties);
-party_Options_Radio_Buttons[secondIndex].addEventListener("click", deSelectAllParties);
+party_Options_Radio_Buttons[firstIndex].addEventListener("click", selectAllParties);
+party_Options_Radio_Buttons[secondIndex].addEventListener("click", selectActiveParties);
+party_Options_Radio_Buttons[thirdIndex].addEventListener("click", deSelectAllParties);
 //end-region
 
 //region -functions-
@@ -220,13 +220,13 @@ function updateStatementPartyInfo(){
 
                 switch(party.position){
                     case "pro":
-                        statement_Parties_Columns[zeroIndex].appendChild(rowElement);
+                        statement_Parties_Columns[firstIndex].appendChild(rowElement);
                         break;
                     case "contra":
-                        statement_Parties_Columns[secondIndex].appendChild(rowElement);
+                        statement_Parties_Columns[thirdIndex].appendChild(rowElement);
                         break;
                     case "none":
-                        statement_Parties_Columns[firstIndex].appendChild(rowElement);
+                        statement_Parties_Columns[secondIndex].appendChild(rowElement);
                         break;
                 }
             }
@@ -290,7 +290,7 @@ function updateHTMLForOptionsPage(){
 
     options_Page_Container.classList.remove("hidden");
 
-    options_Next_Button[zeroIndex].addEventListener("click", updateHTMLForPartiesPage);
+    options_Next_Button[firstIndex].addEventListener("click", updateHTMLForPartiesPage);
 
     createOptions();
 }
@@ -348,18 +348,18 @@ function selectOptionButtonOptions(){
 function selectOptionButtonParties(){
     if(this.classList.contains("option--selected")){
         this.classList.remove("option--selected");
-        if(party_Options_Radio_Buttons[zeroIndex].classList.contains("radio--selected") || party_Options_Radio_Buttons[firstIndex].classList.contains("radio--selected")){
+        if(party_Options_Radio_Buttons[firstIndex].classList.contains("radio--selected") || party_Options_Radio_Buttons[secondIndex].classList.contains("radio--selected")){
+            party_Options_Radio_Buttons[secondIndex].classList.remove("radio--selected");
             party_Options_Radio_Buttons[firstIndex].classList.remove("radio--selected");
-            party_Options_Radio_Buttons[zeroIndex].classList.remove("radio--selected");
         }
         var itemIndex = options.indexOf(this.innerText);
         selectedParties.splice(itemIndex, 1);
     }
     else{
         this.classList.add("option--selected");
-        if(party_Options_Radio_Buttons[zeroIndex].classList.contains("radio--selected") || party_Options_Radio_Buttons[firstIndex].classList.contains("radio--selected")){
+        if(party_Options_Radio_Buttons[firstIndex].classList.contains("radio--selected") || party_Options_Radio_Buttons[secondIndex].classList.contains("radio--selected")){
+            party_Options_Radio_Buttons[secondIndex].classList.remove("radio--selected");
             party_Options_Radio_Buttons[firstIndex].classList.remove("radio--selected");
-            party_Options_Radio_Buttons[zeroIndex].classList.remove("radio--selected");
         }
         selectedParties.push({name:this.innerText, score:0});
     }
@@ -505,13 +505,13 @@ function createTopResultButtons(){
         btn.setAttribute("tabindex", "0");
         btn.setAttribute("style", "transition-delay: " + transition + "s, 0s;");
 
-        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); //The Main svg element for the percentage circle
         svg.setAttribute("viewbox", "0 0 160 160");
         svg.setAttribute("width", "160");
         svg.setAttribute("height", "160");
         svg.classList.add("circle");
 
-        var circle_Background = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        var circle_Background = document.createElementNS("http://www.w3.org/2000/svg", "circle"); //The background circle for the main svg element
         circle_Background.setAttribute("stroke-width", "20");
         circle_Background.setAttribute("fill", "#fff");
         circle_Background.setAttribute("cx", "80");
@@ -519,7 +519,7 @@ function createTopResultButtons(){
         circle_Background.setAttribute("r", "70");
         circle_Background.classList.add("circle__background");
         
-        var circle_Percentage = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        var circle_Percentage = document.createElementNS("http://www.w3.org/2000/svg", "circle"); //The percentage circle for the main svg element
         circle_Percentage.setAttribute("stroke-width", "20");
         circle_Percentage.setAttribute("stroke-dasharray", dashArray + ", " + circumference);
         circle_Percentage.setAttribute("fill", "none");
@@ -533,13 +533,13 @@ function createTopResultButtons(){
         svg.appendChild(circle_Percentage);
         btn.appendChild(svg);
 
-        var svg_Mobile = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        var svg_Mobile = document.createElementNS("http://www.w3.org/2000/svg", "svg"); //The svg element created for mobile compatibility
         svg_Mobile.setAttribute("viewbox", "0 0 100 100");
         svg_Mobile.setAttribute("width", "100");
         svg_Mobile.setAttribute("height", "100");
         svg_Mobile.classList.add("circle", "circle--mobile");
 
-        var circle_Background_Mobile = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        var circle_Background_Mobile = document.createElementNS("http://www.w3.org/2000/svg", "circle"); //The background circle for the mobile svg element
         circle_Background_Mobile.setAttribute("stroke-width", "12");
         circle_Background_Mobile.setAttribute("fill", "#fff");
         circle_Background_Mobile.setAttribute("cx", "50");
@@ -547,7 +547,7 @@ function createTopResultButtons(){
         circle_Background_Mobile.setAttribute("r", "44");
         circle_Background_Mobile.classList.add("circle__background");
 
-        var circle_Percentage_Mobile = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        var circle_Percentage_Mobile = document.createElementNS("http://www.w3.org/2000/svg", "circle"); //The percentage circle for the mobile svg element
         circle_Percentage_Mobile.setAttribute("stroke-width", "12");
         circle_Percentage_Mobile.setAttribute("stroke-dasharray", dashArrayMobile + ", " + circumferenceMobile);
         circle_Percentage_Mobile.setAttribute("fill", "none");
@@ -662,11 +662,11 @@ function deSelectAllParties(){
             }
         }
     }
-    if(party_Options_Radio_Buttons[zeroIndex].classList.contains("radio--selected")){
-        party_Options_Radio_Buttons[zeroIndex].classList.remove("radio--selected");
-    }
     if(party_Options_Radio_Buttons[firstIndex].classList.contains("radio--selected")){
         party_Options_Radio_Buttons[firstIndex].classList.remove("radio--selected");
+    }
+    if(party_Options_Radio_Buttons[secondIndex].classList.contains("radio--selected")){
+        party_Options_Radio_Buttons[secondIndex].classList.remove("radio--selected");
     }
     selectedParties = [];
     tryToActivateNextButtonParties();
@@ -687,14 +687,14 @@ function tryToActivateNextButtonParties(){
     }
 
     if(selected >= 3){
-        options_Next_Button[firstIndex].setAttribute("tabindex", 0);
-        options_Next_Button[firstIndex].addEventListener("click", updateHTMLForResultsPage);
-        options_Next_Button[firstIndex].classList.remove("button--disabled");
+        options_Next_Button[secondIndex].setAttribute("tabindex", 0);
+        options_Next_Button[secondIndex].addEventListener("click", updateHTMLForResultsPage);
+        options_Next_Button[secondIndex].classList.remove("button--disabled");
     }
     else{
-        options_Next_Button[firstIndex].setAttribute("tabindex", "-1");
-        options_Next_Button[firstIndex].addEventListener("click", null);
-        options_Next_Button[firstIndex].classList.add("button--disabled");
+        options_Next_Button[secondIndex].setAttribute("tabindex", "-1");
+        options_Next_Button[secondIndex].addEventListener("click", null);
+        options_Next_Button[secondIndex].classList.add("button--disabled");
     }
 }
 //end-region
