@@ -38,7 +38,7 @@ var results_Top_Container = document.querySelector(".top-3");
 //region -Standard-
 var currentWidth = 0;
 var currentStatement = 0;
-var topScore = 30; // Using a base score of 30 for 30 questions increased by 2 for each option (see checkWeight)
+var topScore = subjects.length; // Using a base score of the amount of questions, increased by 2 for each option (see checkWeight)
 var showingPartyInfo = false;
 var showingInfo = false;
 var onOptionsPage = false;
@@ -60,17 +60,17 @@ const firstIndex = 0;
 const secondIndex = 1;
 const thirdIndex = 2;
 
-const progressWidthIncrement = 3.0303
+const progressWidthIncrement = 3.0303;
 
-const circumference = 439.822971502571
-const circumferenceMobile = 276.46015351590177
+const circumference = 439.822971502571;
+const circumferenceMobile = 276.46015351590177;
 //end-region
 
 //end-region
 
 //region -events-
 start_Button.addEventListener("click", updatePageForStatements);
-nav_Back_Button.addEventListener("click", updatePageForPreviousStatement)
+nav_Back_Button.addEventListener("click", updatePageForPreviousStatement);
 
 agree_Button.addEventListener("click", updatePageForNextStatement);
 disagree_Button.addEventListener("click", updatePageForNextStatement);
@@ -97,7 +97,7 @@ party_Options_Radio_Buttons[thirdIndex].addEventListener("click", deSelectAllPar
  */
 function createPartiesParticipating(){
     var participatingLength = partyArrayParticipating.length;
-    var container = document.querySelectorAll(".start__parties-list")[0]
+    var container = document.querySelectorAll(".start__parties-list")[0];
     
     for(var i=0; i<participatingLength; i++){
         var linkElement = document.createElement("a");
@@ -124,7 +124,7 @@ function createPartiesParticipating(){
  */
 function createPartiesNotParticipating(){
     var notParticipatingLength = partyArrayNotParticipating.length;
-    var container = document.querySelectorAll(".start__parties-list")[1]
+    var container = document.querySelectorAll(".start__parties-list")[1];
     
     for(var i=0; i<notParticipatingLength; i++){
         var linkElement = document.createElement("a");
@@ -697,6 +697,35 @@ function tryToActivateNextButtonParties(){
         options_Next_Button[secondIndex].classList.add("button--disabled");
     }
 }
+
+/**
+ * Updates the choice buttons to display the last selected choice if the user goes back a page
+ */
+function updateChoiceButtons(){
+    var lastSelectedButtonId = choices[choices.length - 1].choice; //The last choice
+    switch(parseInt(lastSelectedButtonId)){
+        case 1: //Last choice was agree
+            agree_Button.classList.add("selected");
+            return;
+        case 2: //Last choice was no choice
+            no_Choice_Button.classList.add("selected");
+            return;
+        case 3: //Last choice was disagree
+            disagree_Button.classList.add("selected");
+            return;
+        case 4: //Last choice was skip
+            return;
+    }
+}
+
+/**
+ * Clear the choice buttons of the selected class
+ */
+function clearChoiceButtons(){
+    agree_Button.classList.remove("selected");
+    no_Choice_Button.classList.remove("selected");
+    disagree_Button.classList.remove("selected");
+}
 //end-region
 
 //region -Functional-
@@ -733,6 +762,7 @@ function updatePageForPreviousStatement(){
     }
     else if(onOptionsPage){
         updateHTMLForStatementPage();
+        updateChoiceButtons();
         options_Page_Container.classList.add("hidden");
         currentWidth -= progressWidthIncrement;
         progress_Bar.setAttribute("style", "width: " + currentWidth + "%;");
@@ -752,6 +782,8 @@ function updatePageForPreviousStatement(){
         return;
     }
 
+    clearChoiceButtons();
+    updateChoiceButtons();
     choices.pop(); //Remove the last statement and choice from array
     currentStatement--;
     currentWidth -= progressWidthIncrement;
@@ -769,6 +801,7 @@ function updatePageForNextStatement(){
         return;
     }
 
+    clearChoiceButtons();
     choices.push({id:currentStatement, choice:this.id, weight:1}) //Add the currentStatement and it's choice to the choices
     currentStatement++;
     currentWidth += progressWidthIncrement;
@@ -816,7 +849,13 @@ function calculateResults(){
             case 3:
                 opt = "contra";
                 break;
+            case 4:
+                opt = "skipped";
+                break;
         }
+
+        if(opt == "skipped") return; //If skipped, continue to next choice
+
         //Match answer to party position
         subjects[choice.id].parties.forEach(subject => {
             selectedParties.forEach(party => {
@@ -852,6 +891,7 @@ function checkWeight(){
         });
     });
 }
+
 //end-region
 
 //end-region

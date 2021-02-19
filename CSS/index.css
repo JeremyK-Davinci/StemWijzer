@@ -2,3 +2,8 @@
     display: none;
     opacity: 0;
 }
+
+.selected{
+    background-color: rgb(45, 45, 207);
+    color: white;
+}
