@@ -702,20 +702,22 @@ function tryToActivateNextButtonParties(){
  * Updates the choice buttons to display the last selected choice if the user goes back a page
  */
 function updateChoiceButtons(){
-    var lastSelectedButtonId = choices[choices.length - 1].choice; //The last choice
-    switch(parseInt(lastSelectedButtonId)){
-        case 1: //Last choice was agree
+    var lastValue = choices[choices.length - 1].choice; //The last choice
+    switch(lastValue){
+        case "pro": //Last choice was agree
             agree_Button.classList.add("selected");
             return;
-        case 2: //Last choice was no choice
+        case "none": //Last choice was no choice
             no_Choice_Button.classList.add("selected");
             return;
-        case 3: //Last choice was disagree
+        case "contra": //Last choice was disagree
             disagree_Button.classList.add("selected");
             return;
-        case 4: //Last choice was skip
+        case "": //Last choice was skip
             return;
     }
+
+
 }
 
 /**
@@ -802,7 +804,7 @@ function updatePageForNextStatement(){
     }
 
     clearChoiceButtons();
-    choices.push({id:currentStatement, choice:this.id, weight:1}) //Add the currentStatement and it's choice to the choices
+    choices.push({id:currentStatement, choice:this.value, weight:1}) //Add the currentStatement and it's choice to the choices
     currentStatement++;
     currentWidth += progressWidthIncrement;
     statement_Current_Count.innerHTML = currentStatement + '/';
@@ -838,23 +840,9 @@ function setItemsToSessionStorage(id){
 function calculateResults(){
     checkWeight();
     choices.forEach(choice => {
-        var opt = "";
-        switch(parseInt(choice.choice)){
-            case 1:
-                opt = "pro";
-                break;
-            case 2:
-                opt = "none";
-                break;
-            case 3:
-                opt = "contra";
-                break;
-            case 4:
-                opt = "skipped";
-                break;
-        }
+        var opt = choice.choice;
 
-        if(opt == "skipped") return; //If skipped, continue to next choice
+        if(opt == "") return; //If skipped, continue to next choice
 
         //Match answer to party position
         subjects[choice.id].parties.forEach(subject => {
@@ -873,8 +861,8 @@ function calculateResults(){
 
     //Add a result to the array for each selected party
     selectedParties.forEach(party => {
-        var res = (party.score / topScore) * 100;
-        results.push({party:party.name, score:res});
+        var result = (party.score / topScore) * 100;
+        results.push({party:party.name, score:result});
     });
 }
 
@@ -882,8 +870,8 @@ function calculateResults(){
  * Checks all choices and options, if one matches increase the choices weight by 1 and increase the top score by 2
  */
 function checkWeight(){
-    choices.forEach(choice => {
-        options.forEach(opt => {
+    options.forEach(opt => {
+        choices.forEach(choice => {
             if(opt == choice.id){
                 topScore += 2;
                 choice.weight++;
