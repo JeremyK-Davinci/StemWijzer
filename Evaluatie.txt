@@ -1,0 +1,7 @@
+Toen ik begon aan deze opdracht was ik maar voor 1 ding bang, de eind calculatie.
+De eerste keer dat ik hier naar keek snapte ik op geen enkele manier hoe ik dat ooit zou moeten uitvogelen.
+Maar na een korte sessie in de helpdesk vond ik de berekening en daarmee vrij snel de code.
+Later bleek dat het echte probleem de styling van de pagina was (dit behoudt ~500 regels aan javascript).
+Verder ben ik wel blij met hoe alles werkt en hoe het eruit ziet.
+
+"Ik haat switch cases." - Beoordeling van Tido Koldenhof

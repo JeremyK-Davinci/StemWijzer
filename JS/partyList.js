@@ -30,7 +30,7 @@ var partyArrayParticipating = [
         logo_offset: 17.2414
     },
     {
-        name: "Partij van de Arbeid",
+        name: "PvdA",
         link: "https://www.pvda.nl/",
         logo_offset: 20.6897
     },
@@ -45,7 +45,7 @@ var partyArrayParticipating = [
         logo_offset: 27.5862
     },
     {
-        name: "50PLUS",
+        name: "50Plus",
         link: "https://www.50pluspartij.nl/",
         logo_offset: 31.0345
     },

@@ -9,6 +9,7 @@ var main_Container = document.getElementById("main_container");
 var statement_Container = document.getElementById("statement_container");
 var statement_Current_Count = document.getElementById("counter");
 
+var counter = document.querySelector(".app__nav-counter");
 var progress_Bar = document.querySelector(".app__nav-progress-indicator");
 var agree_Button = document.querySelector(".button--agree");
 var disagree_Button = document.querySelector(".button--disagree");
@@ -174,6 +175,8 @@ function updateHTMLForStatementPage(){
     nav_Container.classList.remove("app__nav--hidden");
     nav_Back_Button.classList.remove("button--disabled");
     statement_Container.classList.remove("hidden");
+    counter.innerHTML = "<strong id='counter'>1/</strong> " + subjects.length;
+    statement_Current_Count = document.getElementById('counter');
 }
 
 /**
@@ -378,6 +381,7 @@ function createOptions(){
             var column = document.createElement("div");
             column.classList.add("options__column");
             for(var d2=i; d2 < i+10; d2++){
+                if(d2 >= subjects.length) break;
                 var option_Button = document.createElement("button");
                 option_Button.classList.add("option");
                 option_Button.setAttribute("id", id);
@@ -411,16 +415,19 @@ function createPartyOptions(){
             var column = document.createElement("div");
             column.classList.add("options__column", "options__column-parties");
             for(var d2=i; d2 < i+10; d2++){
-                if(d2 >= partyArrayParticipating.length) break;
+                if(d2 >= parties.length) break;
 
                 var party_Button = document.createElement("button");
                 party_Button.classList.add("option", "option--with-image");
                 party_Button.addEventListener("click", selectOptionButtonParties);
                 party_Button.setAttribute("tabindex", "0");
-                party_Button.innerHTML = partyArrayParticipating[d2].name;
+                party_Button.innerHTML = parties[d2].name;
 
                 var party_Button_Image = document.createElement("div");
-                var image_Offset = partyArrayParticipating[d2].logo_offset;
+                var image_Offset = -10;
+                if(partyArrayParticipating.find(e => e.name == parties[d2].name) != null){
+                    image_Offset = partyArrayParticipating.find(e => e.name == parties[d2].name).logo_offset;
+                }
                 party_Button_Image.classList.add("option__image");
                 party_Button_Image.setAttribute("style", "background: url(https://tweedekamer2021.stemwijzer.nl/gfx/img/parties.png) 0px " + image_Offset + "% / 100% 3000% no-repeat;");
                 party_Button.appendChild(party_Button_Image);
@@ -716,8 +723,6 @@ function updateChoiceButtons(){
         case "": //Last choice was skip
             return;
     }
-
-
 }
 
 /**
@@ -797,7 +802,7 @@ function updatePageForPreviousStatement(){
  * Updates the page to go to the next statement or the options page if the current statement is the last also adds the selected choice to the array
  */
 function updatePageForNextStatement(){
-    if(currentStatement == subjects.length){ //If this is the last statement go to th home page
+    if(currentStatement == subjects.length){ //If this is the last statement go to the home page
         updateHTMLForOptionsPage();
         window.sessionStorage.clear();
         return;
@@ -819,6 +824,8 @@ function tryGetItemFromSession(){
         currentWidth = parseFloat(window.sessionStorage.getItem("currentProgressWidth"));
         currentStatement = parseInt(window.sessionStorage.getItem("currentQuestion"));
         choices = JSON.parse(window.sessionStorage.getItem("currentAnswers"));
+        counter.innerHTML = "<strong id='counter'>1/</strong> " + subjects.length;
+        statement_Current_Count = document.getElementById('counter');
         statement_Current_Count.innerHTML = currentStatement + '/';
         updateStatementHTML(currentStatement);
     }
